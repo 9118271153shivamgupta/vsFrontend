@@ -12,17 +12,17 @@ import {
 import logo from '../../assets/TransparentCompanyLogo.png';
 const Footer = () => {
   return (
-    <footer className="bg-[#6e78a2] text-gray-900 py-20 px-6 md:px-16 lg:px-24 w-full border-t border-white/5">
+    <footer className="bg-[#f1c08433] text-black py-20 px-6 md:px-16 lg:px-24 w-full border-t border-white/5">
       <div className="max-w-7xl mx-auto">
         
         {/* --- Top Section: CTA --- */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-white/10 pb-16 mb-16 gap-8">
-          <h2 className="text-4xl md:text-6xl font-medium max-w-lg leading-tight">
+          <h2 className="text-xl md:text-5xl font-bold max-w-lg leading-tight">
             Ready To Build Your <br /> 
-            <span className="text-indigo-500">Dream Project?</span>
+            <span className="text-red-900">Dream Project?</span>
           </h2>
           
-          <button className="bg-white text-black px-10 py-4 rounded-full flex items-center gap-3 font-bold text-lg tracking-widest uppercase hover:bg-indigo-50 transition-all group active:scale-95">
+          <button className="bg-red-500 text-black  hover:text-white px-10 py-4 rounded-full flex items-center gap-3 font-bold text-lg tracking-widest uppercase hover:bg-black transition-all group active:scale-95 cursor-pointer">
             Get in touch 
             <ArrowUpRight size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
           </button>
@@ -45,45 +45,45 @@ const Footer = () => {
           </Link>
 
               </div>
-              <span className="text-2xl font-black tracking-tighter ml-5"> Trading Company</span>
+              <span className="text-2xl  text-black font-black tracking-tighter ml-5"> Trading Company</span>
             </div>
-            <p className="text-white/60 text-lg leading-relaxed max-w-[250px]">
+            <p className="text-black font-bold text-lg leading-relaxed max-w-[250px]">
               Innovating digital landscapes with cutting-edge tech and human-centric design.
             </p>
           </div>
 
           {/* Company Links */}
           <div>
-            <h4 className="text-white/40 text-lg font-bold tracking-widest uppercase mb-6">Company</h4>
-            <ul className="space-y-4 text-sm font-medium">
-              <li><a href="#" className="text-white/70 text-lg hover:text-indigo-400 transition-colors">Projects</a></li>
-              <li><a href="#" className="text-white/70 text-lg hover:text-indigo-400 transition-colors">About Us</a></li>
-              <li><a href="#" className="text-white/70 text-lg hover:text-indigo-400 transition-colors">Services</a></li>
-              <li><a href="#" className="text-white/70 text-lg hover:text-indigo-400 transition-colors">Career</a></li>
+            <h4 className="text-black text-lg font-bold tracking-widest uppercase mb-6">Company</h4>
+            <ul className="space-y-4  text-black  text-sm font-medium">
+              <li><a href="#" className=" text-lg hover:text-indigo-400 transition-colors">Projects</a></li>
+              <li><a href="#" className=" text-lg hover:text-indigo-400 transition-colors">About Us</a></li>
+              <li><a href="#" className=" text-lg hover:text-indigo-400 transition-colors">Services</a></li>
+              <li><a href="#" className=" text-lg hover:text-indigo-400 transition-colors">Career</a></li>
             </ul>
           </div>
 
           {/* Legal Pages */}
           <div>
-            <h4 className="text-white/40 text-lg font-bold tracking-widest uppercase mb-6">Support</h4>
+            <h4 className="text-black text-lg font-bold tracking-widest uppercase mb-6">Support</h4>
             <ul className="space-y-4 text-sm font-medium">
-              <li><a href="#" className="text-white/70 text-lg hover:text-indigo-400 transition-colors">Terms & Condition</a></li>
-              <li><a href="#" className="text-white/70 text-lg hover:text-indigo-400 transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="text-white/70 text-lg hover:text-indigo-400 transition-colors">FAQs</a></li>
+              <li><a href="#" className="text-black text-lg hover:text-indigo-400 transition-colors">Terms & Condition</a></li>
+              <li><a href="#" className="text-black text-lg hover:text-indigo-400 transition-colors">Privacy Policy</a></li>
+              <li><a href="#" className="text-black text-lg hover:text-indigo-400 transition-colors">FAQs</a></li>
             </ul>
           </div>
 
           {/* Contact Info */}
           <div className="space-y-8">
             <div>
-              <h4 className="text-white/40 text-lg font-bold tracking-widest uppercase mb-6">Office</h4>
-              <p className="text-lg leading-relaxed text-white/80">
+              <h4 className="text-black text-lg font-bold tracking-widest uppercase mb-6">Office</h4>
+              <p className="text-lg leading-relaxed text-black">
                 123 Tech Park, Silicon Valley <br /> California, US 94025
               </p>
             </div>
             <div>
               <p className="text-lg font-bold text-indigo-400">+91 98765 43210</p>
-              <p className="text-lg text-white/60 font-medium">hello@nexverra.com</p>
+              <p className="text-lg text-black font-medium">hello@nexverra.com</p>
             </div>
           </div>
         </div>
@@ -92,25 +92,25 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/10 gap-6">
           
           {/* Social Icons with Names */}
-          <div className="flex flex-wrap justify-center gap-6 md:gap-8">
-            <a href="#" className="flex items-center gap-2 text-sm font-medium text-white/60 hover:text-[#1877F2] transition-colors group">
-              <Facebook size={18} className="group-hover:scale-110 transition-transform" />
+          <div className="flex flex-wrap justify-center gap-6 md:gap-8 ">
+            <a href="#" className="flex items-center gap-2 text-sm font-medium text-black hover:text-[#1877F2] transition-colors group">
+              <Facebook size={30} className="group-hover:scale-110 transition-transform " />
               <span>Facebook</span>
             </a>
-            <a href="#" className="flex items-center gap-2 text-sm font-medium text-white/60 hover:text-[#E4405F] transition-colors group">
-              <Instagram size={18} className="group-hover:scale-110 transition-transform" />
+            <a href="#" className="flex items-center gap-2 text-sm font-medium text-black hover:text-[#E4405F] transition-colors group">
+              <Instagram size={30} className="group-hover:scale-110 transition-transform hover:text-[#E4405F]" />
               <span>Instagram</span>
             </a>
-            <a href="#" className="flex items-center gap-2 text-sm font-medium text-white/60 hover:text-[#1DA1F2] transition-colors group">
-              <Twitter size={18} className="group-hover:scale-110 transition-transform" />
+            <a href="#" className="flex items-center gap-2 text-sm font-medium text-black hover:text-[#1DA1F2] transition-colors group">
+              <Twitter size={30} className="group-hover:scale-110 transition-transform" />
               <span>Twitter</span>
             </a>
-            <a href="#" className="flex items-center gap-2 text-sm font-medium text-white/60 hover:text-[#0077B5] transition-colors group">
-              <Linkedin size={18} className="group-hover:scale-110 transition-transform" />
+            <a href="#" className="flex items-center gap-2 text-sm font-medium text-black hover:text-[#0077B5] transition-colors group">
+              <Linkedin size={30} className="group-hover:scale-110 transition-transform" />
               <span>Linkedin</span>
             </a>
-            <a href="#" className="flex items-center gap-2 text-sm font-medium text-white/60 hover:text-[#25D366] transition-colors group">
-              <MessageCircle size={18} className="group-hover:scale-110 transition-transform" />
+            <a href="#" className="flex items-center gap-2 text-sm font-medium text-black hover:text-[#25D366] transition-colors group">
+              <MessageCircle size={30} className="group-hover:scale-110 transition-transform" />
               <span>WhatsApp</span>
             </a>
           </div>
