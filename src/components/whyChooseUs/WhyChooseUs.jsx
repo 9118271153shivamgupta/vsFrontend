@@ -33,7 +33,7 @@ const WhyChooseUs = () => {
         {/* Left Content Side */}
         <div className="flex-1">
           <h2 className="text-3xl md:text-4xl font-semibold text-gray-800 mb-12 text-center lg:text-left">
-            Here’s Why Homeowners Love <span className="text-red-600">Nexverra</span>
+            Here’s Why Homeowners Love <span className="text-red-600">Vs Trading Company</span>
           </h2>
 
           {/* Features Grid */}
