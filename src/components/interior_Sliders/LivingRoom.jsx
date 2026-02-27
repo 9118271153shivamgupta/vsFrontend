@@ -1,47 +1,38 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
-
-// =========================================================
-// FUTURE ASSETS IMPORT GUIDE (src/assets)
-// =========================================================
-// 1. Apni images ko 'src/assets/' folder mein rakhein.
-// 2. Neeche diye gaye tareeke se import karein:
-//    import living1 from '../../assets/living-1.jpg';
-//    import living2 from '../../assets/living-2.jpg';
-// 3. Phir 'livingData' array ke 'image' field mein URL ki jagah 
-//    variable name likhein (e.g., image: living1).
-// =========================================================
 
 const LivingRoom = () => {
   const [selectedImg, setSelectedImg] = useState(null);
   const scrollRef = useRef(null);
 
   const livingData = [
-    {
-      id: 1,
-      title: "Contemporary Living Room with Floating TV Unit",
-      image: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?q=80&w=800",
-    },
-    {
-      id: 2,
-      title: "Modern Living Room with Wall Panelling",
-      image: "https://images.unsplash.com/photo-1567016432779-094069958ad5?q=80&w=800",
-    },
-    {
-      id: 3,
-      title: "Contemporary Living Room with Floating Backlit TV Unit",
-      image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800",
-    },
-    {
-      id: 4,
-      title: "Minimalist Living Space with Ambient Lighting",
-      image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=800",
-    }
+    { id: 1, title: "Contemporary Living Room with Floating TV Unit", image: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?q=80&w=800" },
+    { id: 2, title: "Modern Living Room with Wall Panelling", image: "https://images.unsplash.com/photo-1567016432779-094069958ad5?q=80&w=800" },
+    { id: 3, title: "Contemporary Living Room with Floating Backlit TV Unit", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800" },
+    { id: 4, title: "Minimalist Living Space with Ambient Lighting", image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=800" }
   ];
+
+  // --- 1. AUTO-SLIDE LOGIC (Har 3.5 second mein slide hoga) ---
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const { current } = scrollRef;
+      if (current) {
+        const isEnd = current.scrollLeft + current.offsetWidth >= current.scrollWidth - 10;
+        if (isEnd) {
+          current.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          // Mobile par poora 1 card slide hoga
+          const amount = window.innerWidth > 768 ? 400 : current.offsetWidth;
+          current.scrollBy({ left: amount, behavior: 'smooth' });
+        }
+      }
+    }, 3500);
+    return () => clearInterval(interval);
+  }, []);
 
   const scroll = (direction) => {
     const { current } = scrollRef;
-    const scrollAmount = window.innerWidth > 768 ? 450 : 320;
+    const scrollAmount = window.innerWidth > 768 ? 450 : current.offsetWidth;
     if (direction === 'left') {
       current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
     } else {
@@ -50,62 +41,63 @@ const LivingRoom = () => {
   };
 
   return (
-    <section className="py-12 px-4 md:px-10 lg:px-20 bg-white font-sans relative overflow-hidden">
+    <section className="py-12 bg-white font-sans relative overflow-hidden">
       
-      {/* Title Section - Font style same as screenshot */}
-      <div className="mb-10">
-        <h2 className="text-2xl md:text-3xl font-normal text-[#212121] tracking-tight">
+      {/* Title Section */}
+      <div className="px-4 md:px-10 lg:px-20 mb-10">
+        <h2 className="text-xl md:text-3xl font-semibold text-[#212121] tracking-tight">
           Living Rooms That Host Your Happiest Moments
         </h2>
       </div>
 
       {/* Slider Area */}
-      <div className="relative flex items-center group">
+      <div className="relative flex items-center group px-4 md:px-10 lg:px-20">
         
-        {/* Left Clickable Button (Pink background like image) */}
+        {/* Left Button */}
         <button 
           onClick={() => scroll('left')}
-          className="absolute -left-2 md:-left-8 z-20 flex items-center justify-center w-8 h-12 bg-[#FFF0F2] rounded-r-lg shadow-sm hover:bg-[#ffe4e8] transition-all opacity-0 group-hover:opacity-100"
+          className="absolute left-2 md:left-5 z-30 hidden sm:flex items-center justify-center w-10 h-14 bg-white/90 border border-gray-200 rounded-r-xl shadow-lg md:opacity-0 md:group-hover:opacity-100 transition-all"
         >
-          <ChevronLeft className="text-[#FF4D6D] w-6 h-6" />
+          <ChevronLeft className="text-[#FF4D6D] w-7 h-7" />
         </button>
 
         {/* Image Row */}
         <div 
           ref={scrollRef}
-          className="flex gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-4"
+          className="flex gap-4 md:gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-4 w-full"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {livingData.map((item) => (
             <div 
               key={item.id} 
-              className="min-w-[85%] md:min-w-[32.2%] flex-shrink-0 snap-start cursor-pointer"
+              // FIX: Mobile par w-full (1 card) aur Desktop par 3 cards
+              className="w-full sm:w-[45%] md:w-[31%] flex-shrink-0 snap-start cursor-pointer"
               onClick={() => setSelectedImg(item.image)}
             >
-              <div className="overflow-hidden rounded-sm shadow-sm bg-gray-50">
+              <div className="overflow-hidden rounded-xl shadow-sm bg-gray-50 aspect-video sm:aspect-auto">
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-[240px] md:h-[280px] object-cover hover:scale-105 transition-transform duration-700 ease-in-out"
+                  className="w-full h-full md:h-[280px] object-cover hover:scale-105 transition-transform duration-700 ease-in-out"
                 />
               </div>
-              <p className="mt-4 text-[#333333] text-[16px] md:text-[17px] leading-snug font-normal pr-2">
+              <p className="mt-4 text-[#333333] text-sm md:text-[17px] leading-snug font-medium line-clamp-2 px-1">
                 {item.title}
               </p>
             </div>
           ))}
         </div>
 
-        {/* Right Clickable Button */}
+        {/* Right Button */}
         <button 
           onClick={() => scroll('right')}
-          className="absolute -right-2 md:-right-8 z-20 flex items-center justify-center w-8 h-12 bg-[#FFF0F2] rounded-l-lg shadow-sm hover:bg-[#ffe4e8] transition-all opacity-0 group-hover:opacity-100"
+          className="absolute right-2 md:right-5 z-30 hidden sm:flex items-center justify-center w-10 h-14 bg-white/90 border border-gray-200 rounded-l-xl shadow-lg md:opacity-0 md:group-hover:opacity-100 transition-all"
         >
-          <ChevronRight className="text-[#FF4D6D] w-6 h-6" />
+          <ChevronRight className="text-[#FF4D6D] w-7 h-7" />
         </button>
       </div>
 
-      {/* WhatsApp Float Icon (As seen in screenshot) */}
+      {/* WhatsApp Icon */}
       <a 
         href="https://wa.me/yournumber" 
         target="_blank" 
@@ -116,28 +108,15 @@ const LivingRoom = () => {
         </svg>
       </a>
 
-      {/* --- LIGHTBOX MODAL --- */}
+      {/* Lightbox Modal */}
       {selectedImg && (
-        <div 
-          className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4 animate-in fade-in duration-300"
-          onClick={() => setSelectedImg(null)}
-        >
-          <button className="absolute top-6 right-6 text-white hover:rotate-90 transition-transform">
-            <X size={40} />
-          </button>
-          <img 
-            src={selectedImg} 
-            className="max-w-full max-h-[85vh] object-contain rounded-md shadow-2xl" 
-            alt="Living room full view" 
-          />
+        <div className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 backdrop-blur-sm" onClick={() => setSelectedImg(null)}>
+          <button className="absolute top-6 right-6 text-white"><X size={35} /></button>
+          <img src={selectedImg} className="max-w-full max-h-[85vh] object-contain rounded-lg animate-in zoom-in-95 duration-300" alt="Full view" />
         </div>
       )}
 
-      {/* Custom CSS to hide scrollbar */}
-      <style dangerouslySetInnerHTML={{__html: `
-        .scrollbar-hide::-webkit-scrollbar { display: none; }
-      `}} />
-
+      <style dangerouslySetInnerHTML={{__html: `.scrollbar-hide::-webkit-scrollbar { display: none; }`}} />
     </section>
   );
 };
