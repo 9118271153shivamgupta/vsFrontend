@@ -1,7 +1,7 @@
 
 //! ============================ About.jsx2    
 import React from 'react';
-import Testimonials from '../components/testimonials/testimonials';
+import Testimonials from '../components/testimonials/Testimonials';
 
 const About = () => {
   return (
