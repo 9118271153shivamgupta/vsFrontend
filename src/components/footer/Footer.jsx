@@ -82,8 +82,9 @@ const Footer = () => {
               </p>
             </div>
             <div>
-              <p className="text-lg font-bold text-indigo-400">+91 98765 43210</p>
-              <p className="text-lg text-black font-medium">hello@nexverra.com</p>
+              <p className="text-lg font-bold text-indigo-400">+91 9838151576</p>
+              <p className="text-lg font-bold text-indigo-400">+91 8601515055</p>
+              <p className="text-lg text-black font-medium">bs6528109@gmail.com</p>
             </div>
           </div>
         </div>
