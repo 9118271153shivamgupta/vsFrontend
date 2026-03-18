@@ -27,7 +27,7 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <section className="py-16 bg-black overflow-hidden w-full gap-10">
+    <section className="py-16 bg-white overflow-hidden w-full gap-10">
       <div className="max-w-full mx-auto px-20 flex flex-col lg:flex-row items-center justify-between gap-20">
         
         {/* Left Content Side */}
