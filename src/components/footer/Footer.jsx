@@ -78,7 +78,7 @@ const Footer = () => {
             <div>
               <h4 className="text-black text-lg font-bold tracking-widest uppercase mb-6">Office</h4>
               <p className="text-lg leading-relaxed text-black">
-                123 Tech Park, Silicon Valley <br /> California, US 94025
+                12/652 , Sector12 Munsipoliya chauraha Indra Nagar Lucknow , Pin code 226016
               </p>
             </div>
             <div>
