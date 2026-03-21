@@ -2,6 +2,7 @@ import Booking from "../components/book3D/Booking";
 import Footer from "../components/footer/Footer";
 import Hero from "../components/hero/Hero";
 import EndToEnd from "../components/interior_Sliders/EndToEnd";
+import FalseCeiling from "../components/interior_Sliders/FalseCelling";
 import Kitchen from "../components/interior_Sliders/Kitchen";
 import LivingRoom from "../components/interior_Sliders/LivingRoom";
 import CustomerReviews from "../components/reviews/CustomerReviews";
@@ -19,6 +20,7 @@ const Home = () => (
 
     <Hero/>
     <WhyChooseUs/>
+    <FalseCeiling/>
     <EndToEnd/>
     <Kitchen/>
     <LivingRoom/>
