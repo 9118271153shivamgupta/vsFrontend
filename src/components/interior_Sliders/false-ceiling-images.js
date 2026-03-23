@@ -1,13 +1,4 @@
-// // 1. Pehle saari images ko import karein
-// import img_1 from './img_1.jpg'; // Extension (.jpg, .png) wahi rakhein jo aapki file ki hai
-// import img_2 from './img_2.jpg';
-// import img_3 from './img_3.jpg';
-// import img_4 from './img_4.jpg';
-// import img_5 from './img_5.jpg';
-// import img_6 from './img_6.jpg';
-// // Agar aur images hain (moreInteriors ke liye)
-// import img_7 from './img_7.jpg';
-// import img_8 from './img_8.jpg';
+
  import img_1 from '../../assets/fasle_celling/cercle.jpg';
  import img_2 from '../../assets/fasle_celling/moon_celling_design.jpg';
  import img_3 from '../../assets/fasle_celling/phool.jpg';
@@ -57,10 +48,13 @@ export const ceilingData = [
 ];
 
 // // 3. Extra gallery images ke liye
-// export const moreInteriors = [
-//   img_7,
-//   img_8,
-// ];
+export const moreInteriors = [
+
+  img_7,
+  img_5,
+   "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800",
+  "https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=800",
+];
 
 
 //! 22222222222222222222222222222222 ==============================================2

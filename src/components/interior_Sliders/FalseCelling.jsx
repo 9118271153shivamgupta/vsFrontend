@@ -1,138 +1,196 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, X } from 'lucide-react';
-// Yahan hum Ceiling specific data import kar rahe hain
-// import { ceilingData, moreCeilings } from '../../assets/false-ceiling-images';
-import { ceilingData, moreCeilings } from './false-ceiling-images';
+import React, { useState, useRef, useEffect } from "react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { motion } from "framer-motion";
+import { ceilingData, moreCeilings } from "./false-ceiling-images";
 
 const FalseCeiling = () => {
   const [selectedImg, setSelectedImg] = useState(null);
   const [showFullGallery, setShowFullGallery] = useState(false);
   const scrollRef = useRef(null);
 
-  // --- AUTO-SLIDE LOGIC ---
+  // ✅ AUTO SLIDE
   useEffect(() => {
     const interval = setInterval(() => {
-      const { current } = scrollRef;
-      if (current) {
-        const isEnd = current.scrollLeft + current.offsetWidth >= current.scrollWidth - 10;
-        if (isEnd) {
-          current.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-          const amount = window.innerWidth > 768 ? 400 : current.offsetWidth;
-          current.scrollBy({ left: amount, behavior: 'smooth' });
-        }
-      }
+      if (!scrollRef.current) return;
+
+      const current = scrollRef.current;
+
+      const isEnd =
+        current.scrollLeft + current.offsetWidth >= current.scrollWidth - 10;
+
+      const amount =
+        window.innerWidth > 768 ? 400 : current.offsetWidth;
+
+      current.scrollBy({
+        left: isEnd ? -current.scrollWidth : amount,
+        behavior: "smooth",
+      });
     }, 3500);
 
     return () => clearInterval(interval);
   }, []);
 
+  // ✅ MANUAL SCROLL
   const scroll = (direction) => {
-    const { current } = scrollRef;
-    const scrollAmount = window.innerWidth > 768 ? 400 : current.offsetWidth;
-    if (direction === 'left') {
-      current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-    } else {
-      current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    }
+    if (!scrollRef.current) return;
+
+    const scrollAmount =
+      window.innerWidth > 768
+        ? 400
+        : scrollRef.current.offsetWidth;
+
+    scrollRef.current.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
   };
 
   return (
     <section className="w-full py-12 bg-white font-sans overflow-hidden">
-      
-      {/* Page Title */}
+      {/* Title */}
       <div className="px-4 md:px-10 lg:px-20 mb-10">
-        <h2 className="text-xl md:text-3xl font-semibold text-gray-800 tracking-tight">
+        <h2 className="text-xl md:text-3xl font-semibold text-gray-800">
           Premium False Ceiling Designs for Your Dream Home
         </h2>
       </div>
 
-      {/* Main Slider Section */}
+      {/* Slider */}
       <div className="relative flex items-center group mb-12 px-4 md:px-10 lg:px-20">
-        <button 
-          onClick={() => scroll('left')}
-          className="absolute left-2 md:left-5 z-30 hidden sm:flex items-center justify-center w-10 h-14 bg-white/90 border border-gray-200 rounded-r-xl shadow-lg md:opacity-0 md:group-hover:opacity-100 transition-all active:scale-90"
+        
+        {/* LEFT BUTTON */}
+        <button
+          onClick={() => scroll("left")}
+          aria-label="Scroll Left"
+          className="absolute left-2 md:left-5 z-30 hidden sm:flex items-center justify-center w-10 h-14 bg-white/90 border border-gray-200 rounded-r-xl shadow-lg md:opacity-0 md:group-hover:opacity-100 transition active:scale-90"
         >
           <ChevronLeft className="text-[#FF4D6D] w-7 h-7" />
         </button>
 
-        <div 
+        {/* CARDS */}
+        <div
           ref={scrollRef}
-          className="flex gap-4 md:gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-6 w-full"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          className="flex gap-4 md:gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-6 w-full scroll-smooth"
         >
           {ceilingData.map((item) => (
-            <div 
-              key={item.id} 
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, x: 100 }}   // 👉 RIGHT SIDE SLIDE
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
               className="w-full sm:w-[45%] md:w-[31%] flex-shrink-0 snap-start cursor-pointer"
               onClick={() => setSelectedImg(item.image)}
             >
-              <div className="overflow-hidden rounded-xl bg-gray-50 shadow-sm aspect-video sm:aspect-auto">
+              <div className="overflow-hidden rounded-xl bg-gray-50 shadow-sm">
                 <img
+                  loading="lazy"
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-full md:h-[300px] object-cover hover:scale-105 transition-transform duration-700"
+                  className="w-full h-[250px] md:h-[300px] object-cover hover:scale-105 transition-transform duration-700"
                 />
               </div>
-              <p className="mt-4 text-[#333333] text-sm md:text-[17px] leading-snug font-medium line-clamp-2 px-1">
+              <p className="mt-4 text-gray-800 text-sm md:text-base font-medium line-clamp-2 px-1">
                 {item.title}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
 
-        <button 
-          onClick={() => scroll('right')}
-          className="absolute right-2 md:right-5 z-30 hidden sm:flex items-center justify-center w-10 h-14 bg-white/90 border border-gray-200 rounded-l-xl shadow-lg md:opacity-0 md:group-hover:opacity-100 transition-all active:scale-90"
+        {/* RIGHT BUTTON */}
+        <button
+          onClick={() => scroll("right")}
+          aria-label="Scroll Right"
+          className="absolute right-2 md:right-5 z-30 hidden sm:flex items-center justify-center w-10 h-14 bg-white/90 border border-gray-200 rounded-l-xl shadow-lg md:opacity-0 md:group-hover:opacity-100 transition active:scale-90"
         >
           <ChevronRight className="text-[#FF4D6D] w-7 h-7" />
         </button>
       </div>
 
-      {/* Expert Button Section */}
+      {/* BUTTON */}
       <div className="flex justify-center mt-6">
-        <button 
+        <button
           onClick={() => setShowFullGallery(true)}
-          className="bg-[#E32933] text-white px-8 py-3 rounded-full text-base md:text-lg font-medium hover:bg-[#c2222b] transition-all shadow-lg active:scale-95"
+          className="bg-[#E32933] text-white px-8 py-3 rounded-full text-base md:text-lg font-medium hover:bg-[#c2222b] transition shadow-lg active:scale-95"
         >
-          Consult Ceiling Expert
+          Explore All Ceiling Designs
         </button>
       </div>
 
-      {/* Lightbox Modal */}
+      {/* LIGHTBOX */}
       {selectedImg && (
-        <div className="fixed inset-0 z-[150] bg-black/95 flex items-center justify-center p-4 backdrop-blur-sm" onClick={() => setSelectedImg(null)}>
-          <button className="absolute top-6 right-6 text-white bg-white/10 p-2 rounded-full"><X size={28} /></button>
-          <img src={selectedImg} className="max-w-full max-h-[85vh] object-contain rounded-lg animate-in zoom-in-95 duration-300" alt="Full view" />
+        <div
+          className="fixed inset-0 z-[150] bg-black/95 flex items-center justify-center p-4"
+          onClick={() => setSelectedImg(null)}
+        >
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setSelectedImg(null);
+            }}
+            className="absolute top-6 right-6 text-white bg-white/10 p-2 rounded-full"
+          >
+            <X size={28} />
+          </button>
+
+          <img
+            src={selectedImg}
+            onClick={(e) => e.stopPropagation()}
+            className="max-w-full max-h-[85vh] object-contain rounded-lg"
+            alt="Full view"
+          />
         </div>
       )}
 
-      {/* Full Gallery Modal */}
+      {/* FULL GALLERY */}
       {showFullGallery && (
-        <div className="fixed inset-0 z-[110] bg-white overflow-y-auto animate-in slide-in-from-bottom duration-500">
+        <div className="fixed inset-0 z-[110] bg-white overflow-y-auto">
           <div className="p-6 md:p-12 max-w-7xl mx-auto">
             <div className="flex justify-between items-center mb-10 border-b pb-6">
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-800">Explore All Ceiling Designs</h3>
-              <button onClick={() => setShowFullGallery(false)} className="p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors">
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-800">
+                Explore All Ceiling Designs
+              </h3>
+
+              <button
+                onClick={() => setShowFullGallery(false)}
+                className="p-2 bg-gray-100 rounded-full hover:bg-gray-200"
+              >
                 <X size={28} />
               </button>
             </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-              {[...ceilingData.map(k => k.image), ...moreCeilings].map((img, idx) => (
-                <div key={idx} className="group overflow-hidden rounded-xl shadow-md cursor-pointer relative" onClick={() => setSelectedImg(img)}>
-                  <img src={img} className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" alt="Ceiling Design" />
-                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <span className="text-white border border-white px-4 py-2 rounded-full text-sm">View Design</span>
-                  </div>
-                </div>
-              ))}
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[...ceilingData.map((k) => k.image), ...moreCeilings].map(
+                (img) => (
+                  <motion.div
+                    key={img}
+                    whileHover={{ scale: 1.05 }}
+                    className="rounded-xl overflow-hidden shadow cursor-pointer"
+                    onClick={() => {
+                      setSelectedImg(img);
+                      setShowFullGallery(false);
+                    }}
+                  >
+                    <img
+                      loading="lazy"
+                      src={img}
+                      className="w-full h-64 object-cover"
+                      alt="Ceiling Design"
+                    />
+                  </motion.div>
+                )
+              )}
             </div>
           </div>
         </div>
       )}
 
-      <style dangerouslySetInnerHTML={{__html: `.scrollbar-hide::-webkit-scrollbar { display: none; }`}} />
+      {/* SCROLLBAR HIDE */}
+      <style>
+        {`
+          .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+          }
+        `}
+      </style>
     </section>
   );
 };
