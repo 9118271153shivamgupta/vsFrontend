@@ -47,7 +47,7 @@ const Booking = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-500"
         style={{ 
-          backgroundImage: `url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1920')`, 
+          backgroundImage: `url('https://png.pngtree.com/thumb_back/fh260/background/20260125/pngtree-indoor-ceiling-with-multiple-light-fixtures-image_21100150.webp')`, 
         }}
       >
         <div className="absolute inset-0 bg-black/40" />
@@ -104,8 +104,8 @@ const Booking = () => {
               className="w-full px-4 py-3 border border-gray-300 rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500 appearance-none bg-no-repeat bg-[right_1rem_center] bg-[url('https://cdn-icons-png.flaticon.com/512/271/271210.png')] bg-[length:12px]"
             >
               <option value="">Select your property city</option>
-              <option value="Mumbai">Mumbai</option>
-              <option value="Delhi">Delhi</option>
+              <option value="Lucknow">Lucknow</option>
+              <option value="Kanpur">Kanpur</option>
               <option value="Bangalore">Bangalore</option>
               <option value="Pune">Pune</option>
             </select>
