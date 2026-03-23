@@ -22,10 +22,10 @@ const Footer = () => {
             <span className="text-red-900">Dream Project?</span>
           </h2>
           
-          <button className="bg-red-500 text-black  hover:text-white px-10 py-4 rounded-full flex items-center gap-3 font-bold text-lg tracking-widest uppercase hover:bg-black transition-all group active:scale-95 cursor-pointer">
+          {/* <button className="bg-red-500 text-black  hover:text-white px-10 py-4 rounded-full flex items-center gap-3 font-bold text-lg tracking-widest uppercase hover:bg-black transition-all group active:scale-95 cursor-pointer">
             Get in touch 
             <ArrowUpRight size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-          </button>
+          </button> */}
         </div>
 
         {/* --- Middle Section: Links Grid --- */}
@@ -92,28 +92,42 @@ const Footer = () => {
         {/* --- Bottom Section: Social Icons & Copyright --- */}
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/10 gap-6">
           
-          {/* Social Icons with Names */}
+          {/* --- Bottom Section: Social Icons --- */}
           <div className="flex flex-wrap justify-center gap-6 md:gap-8 ">
-            <a href="#" className="flex items-center gap-2 text-sm font-medium text-black hover:text-[#1877F2] transition-colors group">
+            
+            {/* Facebook Link */}
+            <a 
+              href="https://www.facebook.com/yourprofile" // <--- Yahan apna FB link add kre
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="flex items-center gap-2 text-sm font-medium text-black hover:text-[#1877F2] transition-colors group"
+            >
               <Facebook size={30} className="group-hover:scale-110 transition-transform " />
               <span>Facebook</span>
             </a>
-            <a href="#" className="flex items-center gap-2 text-sm font-medium text-black hover:text-[#E4405F] transition-colors group">
+
+            {/* Instagram Link */}
+            <a 
+              href="https://www.instagram.com/yourhandle" // <--- Yahan apna Insta link add kre
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-sm font-medium text-black hover:text-[#E4405F] transition-colors group"
+            >
               <Instagram size={30} className="group-hover:scale-110 transition-transform hover:text-[#E4405F]" />
               <span>Instagram</span>
             </a>
-            <a href="#" className="flex items-center gap-2 text-sm font-medium text-black hover:text-[#1DA1F2] transition-colors group">
-              <Twitter size={30} className="group-hover:scale-110 transition-transform" />
-              <span>Twitter</span>
-            </a>
-            <a href="#" className="flex items-center gap-2 text-sm font-medium text-black hover:text-[#0077B5] transition-colors group">
-              <Linkedin size={30} className="group-hover:scale-110 transition-transform" />
-              <span>Linkedin</span>
-            </a>
-            <a href="#" className="flex items-center gap-2 text-sm font-medium text-black hover:text-[#25D366] transition-colors group">
+
+            {/* WhatsApp Link */}
+            <a 
+              href="https://wa.me/919118271153?text=Hello%20Nexverra%20Technologies!" // <--- Direct WhatsApp Link
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-sm font-medium text-black hover:text-[#25D366] transition-colors group"
+            >
               <MessageCircle size={30} className="group-hover:scale-110 transition-transform" />
               <span>WhatsApp</span>
             </a>
+
           </div>
 
           <p className="text-white/40 text-[10px] md:text-xs tracking-widest uppercase text-center">
