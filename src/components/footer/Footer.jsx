@@ -34,13 +34,13 @@ const Footer = () => {
           {/* Brand Info */}
           <div className="space-y-6">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center">
+              <div className="w-8 h-8  flex items-center justify-center">
                 <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
                 <Link to="/" className="h-40 flex items-center shrink-0">
             <img 
               src={logo} 
               alt="Nexverra Logo" 
-              className="h-full w-auto object-contain py-2 hover:opacity-80 transition" 
+              className="h-full w-auto object-contain py-2 hover:opacity-100 transition" 
             />
           </Link>
 
@@ -110,7 +110,7 @@ const Footer = () => {
             <a 
               href="https://www.instagram.com/yourhandle" // <--- Yahan apna Insta link add kre
               target="_blank" 
-              rel="noopener noreferrer"
+              rel="noopener noreferrer" 
               className="flex items-center gap-2 text-sm font-medium text-black hover:text-[#E4405F] transition-colors group"
             >
               <Instagram size={30} className="group-hover:scale-110 transition-transform hover:text-[#E4405F]" />
