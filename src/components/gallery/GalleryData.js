@@ -27,7 +27,7 @@ import c5 from '../../assets/fasle_celling/phool.jpg';
 import c6 from '../../assets/fasle_celling/rounded.jpg';
 import c7 from '../../assets/fasle_celling/star.jpg';
 
-// CATEGORIES की स्पेलिंग और Caps को DATA से मैच कर दिया गया है
+// CATEGORIES 
 export const CATEGORIES = ['All', 'Living Room', 'Kitchen', 'Celling', 'Office'];
 
 export const GALLERY_IMAGES = [
