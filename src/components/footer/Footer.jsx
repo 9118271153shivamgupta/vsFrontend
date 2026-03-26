@@ -97,7 +97,7 @@ const Footer = () => {
             
             {/* Facebook Link */}
             <a 
-              href="https://www.facebook.com/yourprofile" // <--- Yahan apna FB link add kre
+              href="https://www.instagram.com/vstrading.company?igsh=aXBzaDEzZzBnOXQy" // <--- Yahan apna FB link add kre
               target="_blank" 
               rel="noopener noreferrer" 
               className="flex items-center gap-2 text-sm font-medium text-black hover:text-[#1877F2] transition-colors group"
@@ -108,7 +108,7 @@ const Footer = () => {
 
             {/* Instagram Link */}
             <a 
-              href="https://www.instagram.com/yourhandle" // <--- Yahan apna Insta link add kre
+              href="https://www.facebook.com/share/1DHZBBk941/" // <--- Yahan apna Insta link add kre
               target="_blank" 
               rel="noopener noreferrer" 
               className="flex items-center gap-2 text-sm font-medium text-black hover:text-[#E4405F] transition-colors group"

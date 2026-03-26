@@ -91,9 +91,9 @@ const Navbar = () => {
 
           {/* 3. RIGHT: Social Icons */}
           <div className={`hidden lg:flex items-center space-x-3 border-l ${shouldShowSolidNav ? 'border-gray-300' : 'border-white/20'} pl-6`}>
-            <a href={facebookLink} target="_blank" rel="noreferrer" className={`${textColor} p-2 rounded-full ${iconHover} transition-all`}><Facebook size={25} /></a>
+            <a href="https://www.facebook.com/share/1DHZBBk941/" target="_blank" rel="noreferrer" className={`${textColor} p-2 rounded-full ${iconHover} transition-all`}><Facebook size={25} /></a>
             <a href={youtubeLink} target="_blank" rel="noreferrer" className={`${textColor} p-2 rounded-full ${iconHover} transition-all`}><Youtube size={30} /></a>
-            <a href={instagramLink} target="_blank" rel="noreferrer" className={`${textColor} p-2 rounded-full ${iconHover} transition-all`}><Instagram size={25} /></a>
+            <a href="https://www.instagram.com/vstrading.company?igsh=aXBzaDEzZzBnOXQy" target="_blank" rel="noreferrer" className={`${textColor} p-2 rounded-full ${iconHover} transition-all`}><Instagram size={25} /></a>
           </div>
 
           {/* MOBILE TOGGLE */}
