@@ -1,102 +1,131 @@
-import React, { useState } from 'react';
-import { X, ArrowRight, Sparkles } from 'lucide-react';
-import { solutions } from './solutionsData'; // डेटा यहाँ इंपोर्ट किया
+import React, { useState, useEffect } from 'react';
+import { X, ArrowRight, Sparkles, Plus } from 'lucide-react';
+import { solutions } from './solutionsData'; 
 
 const WhatIDo = () => {
   const [activeCategory, setActiveCategory] = useState(null);
 
-  // LOGIC: क्लिक किए गए ID के आधार पर सही डेटा ढूँढना
+  useEffect(() => {
+    if (activeCategory) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [activeCategory]);
+
   const selectedData = solutions.find(s => s.id === activeCategory);
 
+  // डायनेमिक कलर्स के लिए एरे (यह डेटा के साथ लूप होगा)
+  const cardStyles = [
+    { bg: 'bg-[#F0F7FF]', border: 'border-blue-100', accent: 'text-blue-600', hover: 'group-hover:bg-blue-600' },
+    { bg: 'bg-[#F5F3FF]', border: 'border-purple-100', accent: 'text-purple-600', hover: 'group-hover:bg-purple-600' },
+    { bg: 'bg-[#F0FDF4]', border: 'border-emerald-100', accent: 'text-emerald-600', hover: 'group-hover:bg-emerald-600' },
+    { bg: 'bg-[#FFF7ED]', border: 'border-orange-100', accent: 'text-orange-600', hover: 'group-hover:bg-orange-600' },
+    { bg: 'bg-[#FFF1F2]', border: 'border-rose-100', accent: 'text-rose-600', hover: 'group-hover:bg-rose-600' },
+  ];
+
   return (
-    <section className="min-h-screen w-full bg-[#fcfcfc] font-sans py-28 relative overflow-hidden">
+    <section className="w-full bg-[#fcfcfc] font-poppins py-16 relative overflow-hidden">
       
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
-           style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM34 4V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")` }}>
-      </div>
-
-      <div className="relative z-10 max-w-[1600px] mx-auto px-6">
+      <div className="relative z-10 max-w-[1440px] mx-auto px-6">
         
-        {/* Header */}
-        <div className="text-center mb-24 animate-fade-in-down">
-          <div className="flex items-center justify-center gap-2 mb-4 text-red-600 font-bold tracking-widest uppercase text-sm">
-            <Sparkles size={16} /> Premium Solutions
+        {/* Compact Header */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center justify-center gap-2 mb-3 px-4 py-1 rounded-full bg-white shadow-sm border border-gray-100 text-[10px] font-bold tracking-[0.2em] text-gray-400 uppercase">
+            <Sparkles size={12} className="text-yellow-500" /> Interior Solutions
           </div>
-          <h2 className="text-5xl md:text-7xl font-black text-[#1a1a1a] tracking-tight leading-none">
-            WHAT <span className="text-red-600">I DO</span>
+          <h2 className="text-3xl md:text-5xl font-semibold text-gray-900 tracking-tight">
+            Our <span className="text-gray-400 font-light italic">Design</span> Services
           </h2>
-          <div className="w-32 h-2 bg-red-600 mx-auto mt-8 rounded-full shadow-lg shadow-red-200"></div>
+          <div className="w-16 h-1 bg-red-500 mx-auto mt-4 rounded-full opacity-70"></div>
         </div>
 
-        {/* Icons Grid (Logic: Loop over Data) */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-y-20 gap-x-12">
-          {solutions.map((item, index) => (
-            <div 
-              key={item.id}
-              onClick={() => setActiveCategory(item.id)}
-              className="flex flex-col items-center cursor-pointer group animate-fade-in-up"
-              style={{ animationDelay: `${index * 50}ms` }}
-            >
-              <div className="w-28 h-28 md:w-36 md:h-36 flex items-center justify-center border border-white/50 rounded-[2.5rem] bg-white/70 backdrop-blur-md shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] group-hover:shadow-[0_20px_50px_-10px_rgba(227,41,51,0.3)] group-hover:border-red-400 group-hover:bg-red-50/50 transition-all duration-500 transform group-hover:-translate-y-4">
-                <span className="text-6xl md:text-7xl group-hover:scale-110 transition-transform duration-500 block leading-none">
-                  {item.icon}
-                </span>
-              </div>
-              <p className="mt-8 text-center text-lg md:text-xl font-black text-gray-800 group-hover:text-red-600 transition-colors uppercase tracking-[0.1em]">
-                {item.title}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Gallery Overlay (Conditional Logic) */}
-      {activeCategory && (
-        <div className="fixed inset-0 z-[500] bg-[#111111] overflow-y-auto animate-zoom-in">
-          <div className="sticky top-0 bg-black/80 backdrop-blur-xl px-10 py-8 flex justify-between items-center z-50 border-b border-white/10">
-            <h3 className="text-4xl font-black text-white italic tracking-tighter">
-              {selectedData.title} <span className="text-red-600">COLLECTION</span>
-            </h3>
-            <button onClick={() => setActiveCategory(null)} className="p-4 bg-white text-black rounded-full hover:bg-red-600 hover:text-white transition-all scale-110 shadow-2xl">
-              <X size={32} strokeWidth={4} />
-            </button>
-          </div>
-
-          <div className="max-w-[1400px] mx-auto p-10 md:p-20">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-              {selectedData.images.map((img, index) => (
-                <div key={index} className="group relative rounded-[2rem] overflow-hidden shadow-2xl bg-zinc-900 border border-white/5">
-                  <img src={img} alt={selectedData.title} className="w-full h-[500px] object-cover opacity-90 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent flex items-end p-10">
-                    <button className="bg-red-600 text-white px-10 py-4 rounded-xl font-black uppercase text-sm tracking-widest shadow-xl flex items-center gap-3 hover:bg-white hover:text-red-600 transition-all">
-                      View Design Details <ArrowRight size={18} />
-                    </button>
+        {/* Dynamic Responsive Grid: ऑटोमेटिक कार्ड्स बनेंगे */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+          {solutions.map((item, index) => {
+            // index % 5 का उपयोग करके कलर्स को बार-बार रिपीट किया गया है
+            const style = cardStyles[index % cardStyles.length];
+            
+            return (
+              <div 
+                key={item.id}
+                onClick={() => setActiveCategory(item.id)}
+                className={`group relative p-5 md:p-6 rounded-[2rem] border transition-all duration-300 cursor-pointer shadow-sm hover:shadow-xl hover:-translate-y-2 ${style.bg} ${style.border}`}
+              >
+                <div className="flex justify-between items-start mb-10">
+                  <div className="text-4xl md:text-5xl group-hover:scale-110 transition-transform duration-500">
+                    {item.icon}
+                  </div>
+                  <div className={`p-2 rounded-xl bg-white/60 text-gray-300 transition-all duration-300 ${style.hover} group-hover:text-white shadow-sm`}>
+                    <Plus size={16} />
                   </div>
                 </div>
-              ))}
+                
+                <div>
+                  <h3 className="text-base md:text-lg font-bold text-gray-800 leading-tight">
+                    {item.title}
+                  </h3>
+                  <div className="mt-2 flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <span className={`text-[10px] font-bold uppercase tracking-wider ${style.accent}`}>View Gallery</span>
+                    <ArrowRight size={10} className={style.accent} />
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Modern Pop-up Modal */}
+      {activeCategory && (
+        <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 md:p-8 animate-fade-in">
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-md" onClick={() => setActiveCategory(null)}></div>
+          
+          <div className="bg-white w-full max-w-5xl max-h-[90vh] rounded-[2.5rem] shadow-2xl relative z-10 overflow-hidden flex flex-col">
+            {/* Modal Nav */}
+            <div className="px-8 py-5 border-b flex justify-between items-center bg-white sticky top-0 z-20">
+              <div>
+                <p className="text-[10px] font-bold text-red-500 uppercase tracking-[0.2em] mb-1">Portfolio</p>
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900">{selectedData.title}</h3>
+              </div>
+              <button 
+                onClick={() => setActiveCategory(null)} 
+                className="p-3 bg-gray-100 hover:bg-red-500 hover:text-white rounded-full transition-all duration-300"
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            {/* Images Grid inside Modal */}
+            <div className="p-6 md:p-10 overflow-y-auto custom-scrollbar">
+              <div className="columns-1 md:columns-2 gap-6 space-y-6">
+                {selectedData.images.map((img, idx) => (
+                  <div key={idx} className="rounded-2xl overflow-hidden shadow-md group">
+                    <img 
+                      src={img} 
+                      alt={selectedData.title} 
+                      className="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105" 
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       )}
 
-      {/* CSS Animations */}
+      {/* Global Poppins Font & Custom Scrollbar */}
       <style dangerouslySetInnerHTML={{__html: `
-        @keyframes fade-in-down {
-          from { opacity: 0; transform: translateY(-20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fade-in-up {
-          from { opacity: 0; transform: translateY(30px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes zoom-in {
-          from { opacity: 0; transform: scale(1.1); }
-          to { opacity: 1; transform: scale(1); }
-        }
-        .animate-fade-in-down { animation: fade-in-down 0.8s ease-out; }
-        .animate-fade-in-up { animation: fade-in-up 0.8s ease-out backwards; }
-        .animate-zoom-in { animation: zoom-in 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        .font-poppins { font-family: 'Poppins', sans-serif; }
+        
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e5e5e5; border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #d4d4d4; }
+
+        @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+        .animate-fade-in { animation: fade-in 0.3s ease-out; }
       `}} />
     </section>
   );

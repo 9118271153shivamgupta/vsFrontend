@@ -1,1 +1,16 @@
 @import "tailwindcss";
+
+/* 1. Google Font को इंपोर्ट करें */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+@theme {
+  /* 2. अपनी 'poppins' फ़ॉन्ट फैमिली को डिफाइन करें */
+  --font-poppins: "Poppins", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* 3. पूरे प्रोजेक्ट (body) पर इसे लागू करें */
+@layer base {
+  body {
+    font-family: var(--font-poppins);
+  }
+}

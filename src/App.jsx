@@ -9,7 +9,7 @@ import Services from './pages/Services';
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-white font-poppins">
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />

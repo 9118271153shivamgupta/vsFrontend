@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Facebook, Youtube, Instagram, Menu, X } from 'lucide-react'; 
@@ -33,7 +32,6 @@ const Navbar = () => {
   const brandColor = shouldShowSolidNav ? "text-indigo-700" : "text-white";
   const iconHover = shouldShowSolidNav ? "hover:bg-gray-200" : "hover:bg-white/10";
 
-  // --- Helper Function to Check Active Link ---
   const isActive = (path) => {
     if (path === 'Home') return location.pathname === "/";
     const formattedPath = `/${path.toLowerCase().replace(/\s+/g, '')}`;
@@ -41,7 +39,8 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ease-in-out flex items-center ${navHeight} ${navBg}`}>
+    /* यहाँ font-poppins क्लास जोड़ दी गई है */
+    <nav className={`fixed top-0 left-0 w-full z-[100] font-poppins transition-all duration-500 ease-in-out flex items-center ${navHeight} ${navBg}`}>
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 h-full w-full">
         <div className="flex justify-between items-center h-full">
           
@@ -67,7 +66,7 @@ const Navbar = () => {
             </div>
           </Link>
 
-          {/* 2. MIDDLE: Navigation Links with Active State */}
+          {/* 2. MIDDLE: Navigation Links */}
           <div className="hidden lg:flex items-center space-x-8">
             {['Home', 'About Us', 'Services', 'Gallery', 'Contact'].map((item) => {
               const active = isActive(item);
@@ -80,7 +79,6 @@ const Navbar = () => {
                     hover:text-indigo-600`}
                 >
                   {item}
-                  {/* Underline Logic: active hone par full width, varna hover par animate */}
                   <span className={`absolute -bottom-1 left-0 h-0.5 bg-indigo-600 transition-all duration-300 
                     ${active ? 'w-full' : 'w-0 group-hover:w-full'}`}>
                   </span>
@@ -108,8 +106,8 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* MOBILE MENU with Active State */}
-      <div className={`fixed inset-0 bg-white z-[110] transform ${isOpen ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-500 lg:hidden`}>
+      {/* MOBILE MENU */}
+      <div className={`fixed inset-0 bg-white z-[110] font-poppins transform ${isOpen ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-500 lg:hidden`}>
         <div className="p-6 flex flex-col h-full bg-slate-50">
           <div className="flex justify-between items-center mb-12">
               <div className="flex flex-col">
