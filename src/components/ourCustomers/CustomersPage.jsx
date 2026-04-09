@@ -4,7 +4,7 @@ import { Star, Quote, Play, CheckCircle } from 'lucide-react';
 import { REVIEWS_DATA } from '../reviews/ReviewData';
 import VideoCard from '../reviews/VideoCard';
 
-const CustomersPage = () => {
+const  CustomersPage = () => {
   const [activeVideo, setActiveVideo] = useState(null);
 
   const stats = [

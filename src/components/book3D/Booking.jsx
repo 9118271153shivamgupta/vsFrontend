@@ -42,7 +42,7 @@ const Booking = () => {
   };
 
   return (
-    <section className="relative w-full min-h-[600px] lg:h-screen flex items-center overflow-hidden font-sans">
+    <section className="relative w-full min-h-[500px] sm:h-screen flex items-center overflow-hidden font-poppins">
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-500"
@@ -57,17 +57,17 @@ const Booking = () => {
         
         {/* Left Side Content */}
         <div className="w-full lg:w-1/2 text-white text-center lg:text-left pt-10 lg:pt-0">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] drop-shadow-2xl">
+          <h1 className="text-2xl md:text-4xl lg:text-6xl font-bold leading-[1.1] drop-shadow-2xl">
             600+ Expert Designers, <br />
             <span className="text-red-500">Ready to Design</span> <br />
             Your First Home.
           </h1>
-          <p className="mt-6 text-lg md:text-xl text-gray-200">Book your free consultation today.</p>
+          <p className=" text-lg md:text-xl text-gray-200">Book your free consultation today.</p>
         </div>
 
         {/* Right Side Form */}
-        <div className="w-full md:w-[450px] bg-white rounded-xl shadow-2xl p-8 mb-10 lg:mb-0">
-          <h2 className="text-2xl font-bold text-[#212121] mb-2">Meet a designer</h2>
+        <div className="w-full md:w-[550px] bg-white rounded-xl shadow-2xl p-8 mb-10 lg:mb-0">
+          <h2 className="text-2xl font-bold text-[#212121] ">Meet a designer</h2>
           <p className="text-gray-500 text-sm mb-6">Fill the form to book your session.</p>
 
           <form className="space-y-5" onSubmit={handleSubmit}>

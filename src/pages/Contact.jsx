@@ -36,7 +36,7 @@ const Contact = () => {
 
   return (
     // Pure page ka background color slight gray
-    <section className="min-h-screen bg-gray-50 flex items-center justify-center p-6 font-sans">
+    <section className="min-h-screen bg-gray-50 flex items-center justify-center p-6 font-poppins">
       {/* Contact Card */}
       <div className="max-w-lg w-full bg-white rounded-3xl shadow-2xl overflow-hidden p-10 border border-gray-100">
         

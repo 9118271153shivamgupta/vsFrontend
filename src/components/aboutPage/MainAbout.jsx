@@ -3,7 +3,7 @@ import Testimonials from '../testimonials/Testimonials';
 
 const MainAbout = () => {
   return (
-    <div className="bg-white font-sans text-gray-900 overflow-x-hidden">
+    <div className="bg-white font-poppins text-gray-900 overflow-x-hidden">
       
       {/* 1. Hero Section */}
       <section className="relative py-20 lg:py-32 bg-[#f8f5f2]">

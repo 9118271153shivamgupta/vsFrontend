@@ -33,7 +33,7 @@ const LivingRoom = () => {
   };
 
   return (
-    <section className="w-full py-12 bg-white font-sans overflow-hidden">
+    <section className="w-full py-12 bg-white font-poppins overflow-hidden">
       
       {/* Page Title */}
       <div className="px-4 md:px-10 lg:px-20 mb-10">
