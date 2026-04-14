@@ -92,7 +92,7 @@ const Footer = () => {
         {/* --- Bottom Section: Social Icons (Right Aligned) --- */}
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/10 gap-6">
           <p className="text-black font-bold text-[10px] md:text-lg tracking-widest uppercase order-2 md:order-1">
-            © 2026 NEXVERRA TECHNOLOGIES. All Rights Reserved.
+            © 2026 <a href="https://www.nexverratechnologies.com/" target="_blank" rel="noopener noreferrer" className="hover:underline">NEXVERRA TECHNOLOGIES</a>. All Rights Reserved.
           </p>
 
           <div className="flex items-center gap-4 order-1 md:order-2">
