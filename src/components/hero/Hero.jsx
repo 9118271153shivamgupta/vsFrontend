@@ -15,7 +15,7 @@ const Hero = () => {
           alt="Premium Interior" 
           className="w-full h-full object-cover object-center"
         />
-        {/* Mobile-friendly overlay: darker on mobile for better readability */}
+        {/* Mobile-friendly overlay */}
         <div className="absolute inset-0 bg-black/60 md:bg-gradient-to-r md:from-[#191e34] md:via-[#020617]/80 md:to-transparent"></div>
       </div>
 
@@ -24,10 +24,9 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
           
           <div className="max-w-3xl text-center md:text-left">
-            {/* Adjusted mobile text size: text-4xl is better for mobile than 3xl */}
             <h1 className="text-2xl md:text-3xl lg:text-5xl font-extrabold text-white leading-[1.2] md:leading-[1.1] mb-6 tracking-tight">
               Complete Home <br className="md:block" /> Interiors. <br className="hidden md:block" />
-              <span className="text-indigo-500">No Running Around.</span>
+              <span className="text-[#bd8100]">No Running Around.</span>
             </h1>
             
             <p className="text-base sm:text-xl md:text-2xl font-medium text-gray-200 mb-8 md:mb-10 max-w-xl mx-auto md:mx-0 leading-relaxed">
@@ -44,10 +43,10 @@ const Hero = () => {
             </button>
           </div>
 
-          {/* Desktop Form */}
-          <div className="hidden lg:block animate-in fade-in slide-in-from-right-10 duration-700">
-             <BookingForm />
-          </div>
+          {/* Desktop Form - Shifted to the right */}
+          <div className="hidden lg:block ml-50 animate-in fade-in slide-in-from-right-10 duration-700 ">
+  <BookingForm />
+</div>
 
         </div>
       </div>

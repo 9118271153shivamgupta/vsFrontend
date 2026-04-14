@@ -18,23 +18,11 @@ const Booking = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
-      // 1. Aapka WhatsApp Number aur Message Format
-      const myWhatsAppNumber = "919118271153"; // Aapka number international format mein
+      const myWhatsAppNumber = "919118271153";
       const message = `*New Booking Request*%0A%0A*Name:* ${formData.name}%0A*Mobile:* ${formData.mobile}%0A*City:* ${formData.city}%0A*Interested in:* 3D Design Session`;
-
-      // 2. WhatsApp URL (Customer ke browser se redirect hoga)
       const whatsappUrl = `https://wa.me/${myWhatsAppNumber}?text=${message}`;
-
-      console.log("Data logged:", formData);
-      
-      // 3. New Tab mein WhatsApp open karega
       window.open(whatsappUrl, '_blank');
-
-      // Optional: Server par data save karne ke liye
-      // await fetch('your-api-endpoint', { method: 'POST', body: JSON.stringify(formData) });
-
       alert("Redirecting to WhatsApp for confirmation...");
     } catch (error) {
       console.error("Error:", error);
@@ -42,88 +30,105 @@ const Booking = () => {
   };
 
   return (
-    <section className="relative w-full min-h-[500px] sm:h-screen flex items-center overflow-hidden font-poppins">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-500"
-        style={{ 
-          backgroundImage: `url('https://png.pngtree.com/thumb_back/fh260/background/20260125/pngtree-indoor-ceiling-with-multiple-light-fixtures-image_21100150.webp')`, 
-        }}
-      >
-        <div className="absolute inset-0 bg-black/40" />
-      </div>
-
-      <div className="relative max-w-7xl mx-auto w-full px-6 md:px-12 flex flex-col lg:flex-row items-center justify-between gap-10">
+    // Section height auto for mobile, fixed for desktop to prevent overflow
+    <section className="relative w-full min-h-screen lg:h-[90vh] flex items-center justify-center bg-[#f2e9d6] font-poppins py-8 px-4 md:px-8 overflow-hidden">
+      
+      {/* Main Card Container - Flex column on mobile, Row on Desktop */}
+      <div className="relative w-full max-w-6xl bg-[#eda711] rounded-[2rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row items-stretch ">
         
-        {/* Left Side Content */}
-        <div className="w-full lg:w-1/2 text-white text-center lg:text-left pt-10 lg:pt-0">
-          <h1 className="text-2xl md:text-4xl lg:text-6xl font-bold leading-[1.1] drop-shadow-2xl">
-            600+ Expert Designers, <br />
-            <span className="text-red-500">Ready to Design</span> <br />
-            Your First Home.
-          </h1>
-          <p className=" text-lg md:text-xl text-gray-200">Book your free consultation today.</p>
-        </div>
+        {/* Left Side: Image & Content */}
+        <div className="w-full lg:w-1/2 p-6 md:p-10 lg:p-12 flex flex-col justify-center relative z-10">
+          {/* Top Small Image - Responsive sizing */}
+          <div className="w-40 h-28 md:w-56 md:h-36 lg:w-64 lg:h-44 rounded-2xl overflow-hidden border-2 border-red-500/20 mb-6 lg:mb-8 shadow-xl mx-auto lg:mx-0">
+            <img 
+              src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=800&auto=format&fit=crop" 
+              alt="Interior Preview" 
+              className="w-full h-full object-cover"
+            />
+          </div>
 
-        {/* Right Side Form */}
-        <div className="w-full md:w-[550px] bg-white rounded-xl shadow-2xl p-8 mb-10 lg:mb-0">
-          <h2 className="text-2xl font-bold text-[#212121] ">Meet a designer</h2>
-          <p className="text-gray-500 text-sm mb-6">Fill the form to book your session.</p>
-
-          <form className="space-y-5" onSubmit={handleSubmit}>
-            <div>
-              <input 
-                type="text" 
-                name="name"
-                required
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="Enter your name" 
-                className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 transition-all"
-              />
-            </div>
-
-            <div className="flex gap-2 border border-gray-300 rounded-md px-3 items-center focus-within:ring-2 focus-within:ring-red-500">
-              <span className="text-lg border-r pr-2">🇮🇳</span>
-              <input 
-                type="tel" 
-                name="mobile"
-                required
-                value={formData.mobile}
-                onChange={handleChange}
-                placeholder="Enter mobile number" 
-                className="w-full py-3 focus:outline-none bg-transparent"
-              />
-            </div>
-
-            <select 
-              name="city"
-              required
-              value={formData.city}
-              onChange={handleChange}
-              className="w-full px-4 py-3 border border-gray-300 rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500 appearance-none bg-no-repeat bg-[right_1rem_center] bg-[url('https://cdn-icons-png.flaticon.com/512/271/271210.png')] bg-[length:12px]"
-            >
-              <option value="">Select your property city</option>
-              <option value="Lucknow">Lucknow</option>
-              <option value="Kanpur">Kanpur</option>
-              <option value="Bangalore">Bangalore</option>
-              <option value="Pune">Pune</option>
-            </select>
-
-            <button 
-              type="submit"
-              className="w-full bg-[#E32933] text-white py-4 rounded-md font-bold text-lg flex items-center justify-center gap-2 hover:bg-[#c2222b] shadow-lg transition-all relative overflow-hidden group"
-            >
-              <span>Book 3D Design Session</span>
-              <span className="group-hover:translate-x-1 transition-transform">→</span>
-              <span className="absolute right-[-10px] top-4 bg-white text-red-600 text-[8px] px-4 rotate-45 font-black uppercase">Free</span>
-            </button>
-
-            <p className="text-[11px] text-gray-400 text-center italic">
-              *By clicking, you will be redirected to WhatsApp to confirm.
+          <div className="text-center lg:text-left">
+            <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-3">
+              Complete Modular <br className="hidden md:block" />
+              <span className="text-black">Kitchens.</span> <span className="text-white">Made Simple.</span>
+            </h1>
+            
+            <h3 className="text-lg md:text-xl font-semibold text-gray-200 mb-3">
+              From Design to Move-in
+            </h3>
+            
+            <p className="text-black text-xs md:text-sm lg:text-base max-w-md mx-auto lg:mx-0 leading-relaxed">
+              Transform your home with our expert designers and high-quality materials, customized just for your needs.
             </p>
-          </form>
+          </div>
         </div>
+
+        {/* Right Side: Form Container */}
+        <div className="w-full lg:w-1/2 flex items-center justify-center p-6 md:p-10 lg:p-12 bg-[#eda711] ">
+          <div className="w-full max-w-md bg-[#0f172a]/50 border border-gray-700/50 rounded-[2rem] p-6 md:p-8 backdrop-blur-md">
+            <form className="space-y-4 md:space-y-5" onSubmit={handleSubmit}>
+              <div className="space-y-1">
+                <label className="text-gray-400 text-[10px] md:text-xs ml-1 uppercase tracking-wider font-medium">Name</label>
+                <input 
+                  type="text" 
+                  name="name"
+                  required
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Enter your name" 
+                  className="w-full px-4 py-3 bg-[#020617] border border-gray-700 rounded-xl text-white focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500/20 transition-all text-sm"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-gray-400 text-[10px] md:text-xs ml-1 uppercase tracking-wider font-medium">Mobile</label>
+                <input 
+                  type="tel" 
+                  name="mobile"
+                  required
+                  value={formData.mobile}
+                  onChange={handleChange}
+                  placeholder="Enter mobile number" 
+                  className="w-full px-4 py-3 bg-[#020617] border border-gray-700 rounded-xl text-white focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500/20 transition-all text-sm"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-gray-400 text-[10px] md:text-xs ml-1 uppercase tracking-wider font-medium">Property City</label>
+                <div className="relative">
+                  <select 
+                    name="city"
+                    required
+                    value={formData.city}
+                    onChange={handleChange}
+                     placeholder="Select-city" 
+                    className="w-full px-4 py-3 bg-white border border-gray-700 rounded-xl text-black focus:outline-none focus:border-red-500 appearance-none transition-all text-sm cursor-pointer"
+                  >
+                    <option value="" className='text-gray-400'>Select city</option>
+                    <option value="Lucknow">Lucknow</option>
+                    <option value="Kanpur">Kanpur</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Pune">Pune</option>
+                  </select>
+                  <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none border-t-4 border-t-gray-500 border-l-4 border-l-transparent border-r-4 border-r-transparent"></div>
+                </div>
+              </div>
+
+              <button 
+                type="submit"
+                className="w-full bg-[#bd8100] text-white py-3.5 md:py-4 rounded-xl font-bold text-sm md:text-base flex items-center justify-center gap-2 hover:bg-red-700 hover:shadow-[0_0_20px_rgba(227,41,51,0.3)] transition-all relative overflow-hidden group cursor-pointer mt-2"
+              >
+                <span>Book Free Design Session</span>
+                <span className="group-hover:translate-x-1 transition-transform">→</span>
+                <span className="absolute right-[-14px] top-2 bg-white text-[#f5ac0f] text-[8px] px-4 rotate-45 font-black uppercase">Free</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        {/* Decorative Glows */}
+        <div className="absolute top-0 right-0 w-48 h-48 md:w-64 md:h-64 bg-red-600/10 blur-[100px] pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-48 h-48 md:w-64 md:h-64 bg-blue-600/10 blur-[100px] pointer-events-none" />
       </div>
     </section>
   );

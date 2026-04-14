@@ -16,16 +16,16 @@ const BookingForm = ({ isModal = false, onClose }) => {
   };
 
   return (
-    <div className={`relative ${isModal ? '' : 'bg-white p-6 rounded-3xl shadow-xl w-full max-w-sm border border-slate-100'}`}>
+    <div className={`relative ${isModal ? '' : ' bg-[#f1eee8] p-6 rounded-3xl shadow-xl w-full max-w-sm border border-slate-100'}`}>
       
       {/* Header - Compact */}
       <div className="flex justify-between items-start mb-5">
         <div>
-          <span className="inline-block px-2 py-0.5 rounded-md bg-indigo-50 text-indigo-600 text-[10px] font-bold uppercase tracking-widest mb-1">
+          <span className="inline-block px-2 py-0.5 rounded-md bg-indigo-50 text-[#f5ac0f] text-[10px] font-bold uppercase tracking-widest mb-1">
             Free Session
           </span>
           <h2 className="text-xl font-extrabold text-slate-900 leading-tight">
-            Book Expert <span className="text-indigo-600">Advice</span>
+            Book Expert <span className="text-[#f5ac0f]">Advice</span>
           </h2>
         </div>
         
@@ -84,7 +84,7 @@ const BookingForm = ({ isModal = false, onClose }) => {
         {/* Submit Button - Slim & Sharp */}
         <button 
           type="submit" 
-          className="w-full bg-slate-900 hover:bg-indigo-600 text-white py-3 rounded-xl font-bold text-sm mt-2 transition-all flex items-center justify-center gap-2 group shadow-lg shadow-indigo-500/10"
+          className="w-full bg-[#f5ac0f] hover:bg-[#ebcd8d] text-white hover:text-black py-3 rounded-xl font-bold text-sm mt-2 transition-all flex items-center justify-center gap-2 group shadow-lg shadow-indigo-500/10"
         >
           <span>Confirm Booking</span>
           <Send size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
