@@ -12,13 +12,6 @@ import WhyChooseUs from "../components/whyChooseUs/WhyChooseUs";
 
 const Home = () => (
   <div className="min-h-[80vh] flex flex-col items-center justify-center bg-radial-[at_top_right] from-indigo-50 to-white">
-    {/* <h1 className="text-7xl font-black text-gray-900 text-center">
-      Build <span className="text-indigo-600">Faster</span> <br /> with Tailwind v4
-    </h1>
-    <p className="mt-6 text-gray-500 text-lg max-w-lg text-center">
-      Ek naye zamane ka architecture, jahan har file organize hai aur performance top-notch.
-    </p> */}
-
     <Hero/>
     <WhyChooseUs/>
     <FalseCeiling/>

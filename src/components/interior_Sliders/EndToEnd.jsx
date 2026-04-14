@@ -57,7 +57,7 @@ const EndToEnd = () => {
 
         <div 
           ref={scrollRef}
-          className="flex gap-4 md:gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-6 w-full"
+          className="flex gap-4 md:gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory  w-full"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {endToEndData.map((item) => (
@@ -73,7 +73,7 @@ const EndToEnd = () => {
                   className="w-full h-full md:h-[300px] object-cover hover:scale-105 transition-transform duration-700"
                 />
               </div>
-              <p className="mt-4 text-[#333333] text-sm md:text-[17px] leading-snug font-medium line-clamp-2 px-1">
+              <p className=" text-[#140f0f] text-sm md:text-[15px] leading-snug font-medium line-clamp-2 px-1">
                 {item.title}
               </p>
             </div>
@@ -84,12 +84,12 @@ const EndToEnd = () => {
           onClick={() => scroll('right')}
           className="absolute right-2 md:right-5 z-30 hidden sm:flex items-center justify-center w-10 h-14 bg-white/90 border border-gray-200 rounded-l-xl shadow-lg md:opacity-0 md:group-hover:opacity-100 transition-all active:scale-90"
         >
-          <ChevronRight className="text-[#FF4D6D] w-7 h-7" />
+          <ChevronRight className="text-[#9f0924] w-7 h-7" />
         </button>
       </div>
 
-      {/* Expert Button Section */}
-      <div className="flex justify-center mt-6">
+      {/* Expert Button Section */} 
+      <div className="flex justify-center mt-0">
         <button 
           onClick={() => setShowFullGallery(true)}
           className="bg-[#E32933] text-white px-8 py-3 rounded-full text-base md:text-lg font-medium hover:bg-[#c2222b] transition-all shadow-lg active:scale-95"

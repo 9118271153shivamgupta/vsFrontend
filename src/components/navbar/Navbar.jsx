@@ -32,7 +32,7 @@ const Navbar = () => {
     setIsOpen(false);
   }, [location]);
 
-  const youtubeLink = "https://youtube.com/c/your-channel"; 
+  const youtubeLink = "https://youtube.com/c/your-channel";     
 
   const shouldShowSolidNav = !isHomePage || scrolled;
   const navHeight = shouldShowSolidNav ? "h-16 md:h-20" : "h-24 md:h-32";
@@ -62,7 +62,7 @@ const Navbar = () => {
                 src={logo} 
                 alt="Logo" 
                 className={`w-auto object-contain transition-all duration-500 ${
-                  shouldShowSolidNav ? 'h-[60%]' : 'h-[80%]'
+                  shouldShowSolidNav ? 'h-[100%]' : 'h-[100%]'
                 } ${!shouldShowSolidNav && !isOpen && 'brightness-0 invert'}`} 
               />
             </div>
@@ -120,7 +120,7 @@ const Navbar = () => {
                 key={item} 
                 to={item === 'Home' ? '/' : `/${item.toLowerCase().replace(/\s+/g, '')}`} 
                 onClick={() => setIsOpen(false)} 
-                className={`text-4xl font-black transition-colors ${isActive(item) ? 'text-indigo-600' : 'text-gray-900'}`}
+                className={`text-xl font-black transition-colors ${isActive(item) ? 'text-indigo-600' : 'text-gray-900'}`}
               >
                 {item}
               </Link>
@@ -128,10 +128,10 @@ const Navbar = () => {
           </div>
           
           {/* Mobile Socials bottom */}
-          <div className="mt-auto flex space-x-6 pb-10 border-t border-gray-200 pt-8">
-            <a href="https://www.facebook.com/share/1DHZBBk941/" className="text-gray-600"><Facebook size={24} /></a>
-            <a href="https://www.instagram.com/vstrading.company?igsh=aXBzaDEzZzBnOXQy" className="text-gray-600"><Instagram size={24} /></a>
-            <a href={youtubeLink} className="text-gray-600"><Youtube size={24} /></a>
+          <div className="mt-5 flex space-x-6 pb-10 border-t border-black pt-3">
+            <a href="https://www.facebook.com/share/1DHZBBk941/" className="text-blue-600"><Facebook size={24} /></a>
+            <a href="https://www.instagram.com/vstrading.company?igsh=aXBzaDEzZzBnOXQy" className="text-pink-600"><Instagram size={24} /></a>
+            <a href={youtubeLink} className="text-red-600"><Youtube size={24} /></a>
           </div>
         </div>
       </div>
