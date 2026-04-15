@@ -64,7 +64,7 @@ const CustomersPage = () => {
         <motion.button 
           whileHover={{ scale: 1.05, backgroundColor: "#D4AF37", color: "#fff" }}
           whileTap={{ scale: 0.95 }}
-          className="bg-white text-black px-8 py-4 rounded-full font-semibold text-base transition-all duration-300 cursor-pointer shadow-lg"
+          className="bg-[#f9ad0a] text-black px-8 py-4 rounded-full font-semibold text-base transition-all duration-300 cursor-pointer shadow-lg"
         >
           Book Your Free Consultation
         </motion.button>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { User, Phone, MessageSquare, Send } from 'lucide-react';
 import { sendWhatsAppMessage } from '../utils/whatsappUtils'; 
 
 const WhatsAppForm = () => {
@@ -22,6 +23,7 @@ const WhatsAppForm = () => {
       const cleanedPhone = phone.replace(/[^+\d]/g, ''); 
       await sendWhatsAppMessage(name, cleanedPhone, message); 
       e.target.reset();
+      alert("Message Sent Successfully!");
     } catch (error) {
       console.error("Error:", error);
       alert("Something went wrong!");
@@ -30,48 +32,82 @@ const WhatsAppForm = () => {
     }
   };
 
-  const inputStyle = "w-full px-4 py-3 text-sm rounded-xl border border-gray-800 bg-black text-gray-100 placeholder:text-gray-700 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition duration-200";
-  const labelStyle = "block text-xs font-semibold text-gray-400 mb-1.5 uppercase tracking-wider";
+  // Styling to match BookingForm
+  const labelStyle = "text-[11px] font-bold text-slate-500 ml-1 uppercase";
+  const inputContainerStyle = "relative group";
+  const iconStyle = "absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-[#f9ad0a] transition-colors";
+  const inputStyle = "w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#f9ad0a]/10 focus:border-[#f9ad0a] outline-none text-sm text-slate-900 transition-all placeholder:text-slate-400 font-medium";
 
   return (
-    <form onSubmit={handleContactSubmit} className="space-y-5">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div>
-          <label className={labelStyle}>First Name</label>
-          <input required name="userName" type="text" placeholder="John Doe" className={inputStyle} />
-        </div>
-        <div>
-          <label className={labelStyle}>Phone Number</label>
-          <input required name="userPhone" type="tel" placeholder="+91 00000 00000" className={inputStyle} />
+    <form onSubmit={handleContactSubmit} className="space-y-3.5">
+      
+      {/* Name Input */}
+      <div className="space-y-1">
+        <label className={labelStyle}>Full Name</label>
+        <div className={inputContainerStyle}>
+          <User className={iconStyle} size={16} />
+          <input 
+            required 
+            name="userName" 
+            type="text" 
+            placeholder="Your name" 
+            className={inputStyle} 
+          />
         </div>
       </div>
 
-      <div>
-        <label className={labelStyle}>Message</label>
-        <textarea 
-          required 
-          name="userMsg" 
-          rows="3" 
-          placeholder="Tell us about your project..." 
-          className={`${inputStyle} resize-none`} 
-        />
+      {/* Phone Input */}
+      <div className="space-y-1">
+        <label className={labelStyle}>Phone Number</label>
+        <div className={inputContainerStyle}>
+          <Phone className={iconStyle} size={16} />
+          <input 
+            required 
+            name="userPhone" 
+            type="tel" 
+            placeholder="+91 00000 00000" 
+            className={inputStyle} 
+          />
+        </div>
       </div>
 
+      {/* Message Input */}
+      <div className="space-y-1">
+        <label className={labelStyle}>Project Details</label>
+        <div className={inputContainerStyle}>
+          <MessageSquare className="absolute left-3.5 top-3 text-slate-400 group-focus-within:text-[#f9ad0a] transition-colors" size={16} />
+          <textarea 
+            required 
+            name="userMsg" 
+            rows="2" 
+            placeholder="e.g. 2BHK Interior Design" 
+            className={`${inputStyle} pl-10 pt-2.5 resize-none`}
+          ></textarea>
+        </div>
+      </div>
+
+      {/* Submit Button */}
       <button 
         type="submit" 
         disabled={loading}
-        className={`w-full flex items-center justify-center gap-2 py-4 rounded-xl font-semibold text-base transition duration-300 shadow-lg
-          ${loading ? 'bg-gray-800 text-gray-500 cursor-not-allowed' : 'bg-white text-black hover:bg-gray-200 active:scale-[0.98]'}`}
+        className={`w-full py-3 rounded-xl font-bold text-sm mt-2 transition-all flex items-center justify-center gap-2 group shadow-lg shadow-black/5
+          ${loading 
+            ? 'bg-[#f9ad0a]/70 text-white cursor-not-allowed' 
+            : 'bg-[#f9ad0a] hover:bg-[#ebcd8d] text-white hover:text-black active:scale-[0.98]'}`}
       >
-        {loading ? "Connecting..." : (
+        {loading ? (
+          "Sending..."
+        ) : (
           <>
-            Send Message 
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
+            <span>Send Message</span>
+            <Send size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
           </>
         )}
       </button>
+
+      <p className="text-center text-[10px] text-slate-400 font-medium italic">
+        Fast response guaranteed within 24 hours.
+      </p>
     </form>
   );
 };

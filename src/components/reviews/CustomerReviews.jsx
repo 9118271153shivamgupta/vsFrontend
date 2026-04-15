@@ -12,7 +12,7 @@ const CustomerReviews = () => {
   const duplicatedData = [...REVIEWS_DATA, ...REVIEWS_DATA];
 
   return (
-    <section className="w-full py-0 md:py-0 bg-white overflow-hidden font-poppins">
+    <section className="w-full pt-10 md:py-0 bg-white overflow-hidden font-poppins">
       {/* CSS for Poppins Import */}
       <style dangerouslySetInnerHTML={{ __html: `
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
@@ -20,8 +20,8 @@ const CustomerReviews = () => {
       `}} />
 
       {/* Header Section */}
-      <div className="max-w-4xl mx-auto text-center mb-10 px-4">
-        <h2 className="text-2xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-3 tracking-tight leading-tight">
+      <div className="max-w-4xl mx-auto text-center my-5 px-4">
+        <h2 className="text-2xl md:text-3xl lg:text-5xl font-samibold text-gray-900 mb-3 tracking-tight leading-tight">
           55,000+ Homes Designed with Love
         </h2>
         <p className="text-gray-500 text-base md:text-lg font-medium">Real stories from real homeowners.</p>
