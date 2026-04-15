@@ -36,7 +36,7 @@ const Hero = () => {
             
             <button 
               onClick={() => setShowForm(true)}
-              className="lg:hidden w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-3 transition-all shadow-xl shadow-red-600/40 active:scale-95"
+              className="lg:hidden w-full sm:w-auto bg-[#d2940e] hover:bg-[#dcb766] text-white px-8 py-2 rounded-full font-semibold text-lg flex items-center justify-center gap-3 transition-all  shadow-[#c78b0b] active:scale-95"
             >
               Book 3D Design Session
               <ArrowRight size={22} />

@@ -34,7 +34,7 @@ const Booking = () => {
     <section className="relative w-full min-h-screen lg:h-[90vh] flex items-center justify-center bg-[#f2e9d6] font-poppins py-8 px-4 md:px-8 overflow-hidden">
       
       {/* Main Card Container - Flex column on mobile, Row on Desktop */}
-      <div className="relative w-full max-w-6xl bg-[#eda711] rounded-[2rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row items-stretch ">
+      <div className="relative w-full max-w-6xl bg-[#f2e9d6] rounded-[2rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row items-stretch ">
         
         {/* Left Side: Image & Content */}
         <div className="w-full lg:w-1/2 p-6 md:p-10 lg:p-12 flex flex-col justify-center relative z-10">
@@ -48,12 +48,12 @@ const Booking = () => {
           </div>
 
           <div className="text-center lg:text-left">
-            <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-3">
+            <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-black leading-tight mb-3">
               Complete Modular <br className="hidden md:block" />
-              <span className="text-black">Kitchens.</span> <span className="text-white">Made Simple.</span>
+              <span className="text-[#eea506]">Kitchens.</span> <span className="text-[#e6a008ce]">Made Simple.</span>
             </h1>
             
-            <h3 className="text-lg md:text-xl font-semibold text-gray-200 mb-3">
+            <h3 className="text-lg md:text-xl font-semibold text-black mb-3">
               From Design to Move-in
             </h3>
             
@@ -64,11 +64,11 @@ const Booking = () => {
         </div>
 
         {/* Right Side: Form Container */}
-        <div className="w-full lg:w-1/2 flex items-center justify-center p-6 md:p-10 lg:p-12 bg-[#eda711] ">
-          <div className="w-full max-w-md bg-[#0f172a]/50 border border-gray-700/50 rounded-[2rem] p-6 md:p-8 backdrop-blur-md">
+        <div className="w-full lg:w-1/2 flex items-center justify-center p-6 md:p-10 lg:p-12 bg-[#f2e9d6] ">
+          <div className="w-full max-w-md bg-[#f1b73b] border  rounded-[2rem] p-6 text-black md:p-8 backdrop-blur-md">
             <form className="space-y-4 md:space-y-5" onSubmit={handleSubmit}>
               <div className="space-y-1">
-                <label className="text-gray-400 text-[10px] md:text-xs ml-1 uppercase tracking-wider font-medium">Name</label>
+                <label className="text-back text-[15px] md:text-sm ml-1 uppercase tracking-wider font-medium">Name</label>
                 <input 
                   type="text" 
                   name="name"
@@ -76,12 +76,12 @@ const Booking = () => {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Enter your name" 
-                  className="w-full px-4 py-3 bg-[#020617] border border-gray-700 rounded-xl text-white focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500/20 transition-all text-sm"
+                  className="w-full px-4 py-3 bg-white border border-gray-700 rounded-xl text-white focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500/20 transition-all text-sm"
                 />
               </div>
 
               <div className="space-y-1">
-                <label className="text-gray-400 text-[10px] md:text-xs ml-1 uppercase tracking-wider font-medium">Mobile</label>
+                <label className="text-black text-[15px] md:text-sm ml-1 uppercase tracking-wider font-medium">Mobile</label>
                 <input 
                   type="tel" 
                   name="mobile"
@@ -89,12 +89,12 @@ const Booking = () => {
                   value={formData.mobile}
                   onChange={handleChange}
                   placeholder="Enter mobile number" 
-                  className="w-full px-4 py-3 bg-[#020617] border border-gray-700 rounded-xl text-white focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500/20 transition-all text-sm"
+                  className="w-full px-4 py-3 bg-white border border-gray-700 rounded-xl text-white focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500/20 transition-all text-sm"
                 />
               </div>
 
               <div className="space-y-1">
-                <label className="text-gray-400 text-[10px] md:text-xs ml-1 uppercase tracking-wider font-medium">Property City</label>
+                <label className="text-black text-[15px] md:text-sm ml-1 uppercase tracking-wider font-medium">Property City</label>
                 <div className="relative">
                   <select 
                     name="city"
@@ -102,7 +102,7 @@ const Booking = () => {
                     value={formData.city}
                     onChange={handleChange}
                      placeholder="Select-city" 
-                    className="w-full px-4 py-3 bg-white border border-gray-700 rounded-xl text-black focus:outline-none focus:border-red-500 appearance-none transition-all text-sm cursor-pointer"
+                    className="w-full px-4 py-3 bg-white border border-gray-700 rounded-xl text-black focus:outline-none focus:bg-[#eda711] appearance-none transition-all text-sm cursor-pointer"
                   >
                     <option value="" className='text-gray-400'>Select city</option>
                     <option value="Lucknow">Lucknow</option>
@@ -116,7 +116,7 @@ const Booking = () => {
 
               <button 
                 type="submit"
-                className="w-full bg-[#bd8100] text-white py-3.5 md:py-4 rounded-xl font-bold text-sm md:text-base flex items-center justify-center gap-2 hover:bg-red-700 hover:shadow-[0_0_20px_rgba(227,41,51,0.3)] transition-all relative overflow-hidden group cursor-pointer mt-2"
+                className="w-full bg-[#bd8100] text-white py-3.5 md:py-4 rounded-xl font-bold text-sm md:text-base flex items-center justify-center gap-2 hover:bg-[#eda711] hover:text-black  hover:border hover:shadow-[0_0_20px_rgba(227,41,51,0.3)] transition-all relative overflow-hidden group cursor-pointer mt-2"
               >
                 <span>Book Free Design Session</span>
                 <span className="group-hover:translate-x-1 transition-transform">→</span>

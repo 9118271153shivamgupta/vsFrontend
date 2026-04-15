@@ -68,7 +68,7 @@ const BookingForm = ({ isModal = false, onClose }) => {
         </div>
 
         {/* Details - Compact Area */}
-        <div className="space-y-1">
+        <div className="space-y-1 ">
           <label className="text-[11px] font-bold text-slate-500 ml-1 uppercase">Project Details</label>
           <div className="relative group">
             <MessageSquare className="absolute left-3.5 top-3 text-slate-400 group-focus-within:text-indigo-500 transition-colors" size={16} />

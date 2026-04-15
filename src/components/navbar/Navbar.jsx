@@ -53,7 +53,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-full">
           
           {/* 1. LEFT: Logo */}
-          <Link to="/" className="flex items-center gap-3 h-full z-[111]">
+          <Link to="/" className="flex items-center  h-full z-[111]">
             <div className="h-full flex items-center">
               <img 
                 src={logo} 
@@ -137,7 +137,7 @@ const Navbar = () => {
             <Link 
               to="/contact" 
               onClick={() => setIsOpen(false)}
-              className="flex items-center justify-center gap-3 w-full bg-indigo-700 text-white py-4 rounded-xl font-bold text-lg shadow-lg active:scale-95 transition-all"
+              className="flex items-center justify-center gap-3 w-full bg-[#f9ad0a] text-white py-4 rounded-xl font-bold text-lg shadow-lg active:scale-95 transition-all"
             >
               Get in Touch
               <ArrowRight size={20} />

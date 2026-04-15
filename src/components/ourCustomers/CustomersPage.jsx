@@ -23,7 +23,7 @@ const CustomersPage = () => {
           <motion.span 
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-red-600 font-semibold tracking-widest uppercase text-xs"
+            className="text-[#eda711] font-semibold tracking-widest uppercase text-xs"
           >
             Real People. Real Stories.
           </motion.span>
@@ -59,7 +59,7 @@ const CustomersPage = () => {
 
       {/* 4. CALL TO ACTION (CTA) - Professional & Compact */}
       <section className="bg-[#90722f] py-12 md:py-16 px-6 mx-4 md:mx-12 lg:mx-24 rounded-[2rem] mb-12 text-center text-white relative overflow-hidden mt-8">
-        <Quote className="mx-auto mb-4 text-red-500 opacity-40" size={32} />
+        <Quote className="mx-auto mb-4 text-black " size={32} />
         <h2 className="text-2xl md:text-4xl font-semibold mb-6 max-w-2xl mx-auto leading-tight">Ready to be our next success story?</h2>
         <motion.button 
           whileHover={{ scale: 1.05, backgroundColor: "#D4AF37", color: "#fff" }}

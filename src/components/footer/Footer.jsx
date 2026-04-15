@@ -7,12 +7,12 @@ import {
   MapPin, 
   Phone, 
   Mail 
-} from 'lucide-react';
+} from 'lucide-react';      
 import logo from '../../assets/TransparentCompanyLogo.png';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#fbc85b] text-black py-8 px-6 md:px-16 lg:px-24 w-full border-t border-white/5 font-poppins">
+    <footer className="bg-[#f6ab09] text-black py-8 px-6 md:px-16 lg:px-24 w-full border-t border-white/5 font-poppins">
       <div className="max-w-9xl mx-auto">
         
         {/* --- Top/Middle Section: Links Grid --- */}
@@ -24,7 +24,7 @@ const Footer = () => {
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 flex items-center justify-center">
                   <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
-                  <Link to="/" className="h-40 flex items-center shrink-0">
+                  <Link to="/" className="h-30 flex items-center shrink-0">
                     <img 
                       src={logo} 
                       alt="Nexverra Logo" 
@@ -32,7 +32,16 @@ const Footer = () => {
                     />
                   </Link>
                 </div>
-                <span className="text-xl font-bold text-black tracking-tighter py-5 ml-5 leading-tight">Trading Company</span>
+                <div className="flex flex-col  mt-4">
+              {/* VS TRADING color updated to #f9ad0a */}
+              <span className={`text-lg sm:text-xl md:text-xl font-bold ml-4 tracking-tight transition-all `}> 
+                VS TRADING
+              </span>
+              <span className={`text-[8px] sm:text-[10px] text-black font-bold ml-8  tracking-[0.2em] uppercase `}>
+                Company
+              </span>
+            </div>
+                
               </div>
               <p className="text-black text-lg leading-relaxed max-w-[250px] font-medium">
                 Innovating digital landscapes with cutting-edge tech and human-centric design.
